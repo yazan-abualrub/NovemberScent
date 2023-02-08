@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign in {% endblock %}
+
+
+{% block content%}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p  class="mb-5 mt-5 fs-2 fw-bold d-flex justify-content-center "> Sign in </p>
+
+    <div class="container mt-5 signup">
+        <div class="row">
+            <div  class="col-sm-4"></div>
+
+            <div class="col-sm-4">
+
+                {% include 'partials/_alerts.html' %}
+
+                <!-- Email input -->
+                <div class="mb-4 ">
+                    <input name="email" type="email" id="registerEmail" placeholder="Email" class="text-center"
+                        required value="{{email}}"/>
+                </div>
+
+                <!-- Password input -->
+                <div>
+                    <input name="password" type="password" id="registerPassword" placeholder="Password"
+                        class="text-center" required value="{{password}}"/>
+                    <!-- <div><a style="color: black;" href="#"> Forgot your password?</a></div> -->
+                </div>
+
+                <div>
+                    <input style="width: 17px;" type="checkbox" name="rememberMe" value="lsRememberMe" id="rememberMe">
+                    <label style="position: relative; bottom:18px;" for="rememberMe">Remember me</label>
+                </div>
+
+                <button type="submit" class="signupBtn text-center"> Sign in </button>
+                <div class="mt-2"> Don't have an account? <span> <a style="color: black;"
+                            href="{% url 'signup' %}"> Create one </a> </span> </div>
+
+            </div>
+
+            <div class="col-sm-4"></div>
+        </div>
+
+    </div>
+
+</form>
+
+{% endblock %}

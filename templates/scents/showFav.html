@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} My Favorites {% endblock %}
+
+
+{% block content%}
+
+<div class="products mt-5">
+  <p class="text-center fw-bold fs-3"> Favorites Scents </p>
+
+  <div class="container">
+    <div class="row mt-5 mb-5">
+
+      {% for pro in products%}
+
+      <div class="col-sm-6 col-lg-3 mb-4">
+        <div class="card">
+          <a href="{% url 'scent' pro_id=pro.id %}"><img src="{{ pro.photo.url }}" class="card-img-top" alt="..."></a>
+          <div class="card-body">
+            <h5 class="card-title">{{ pro.name }}</h5>
+            <p class="card-text text-truncate">{{ pro.description }}</p>
+            <a href="{% url 'scent' pro_id=pro.id %}"> <button class="btn-5"><span>Show Details</span></button></a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

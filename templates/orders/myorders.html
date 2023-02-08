@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} My orders {% endblock %}
+
+{% block content%}
+
+<div class="container mt-5  ">
+
+    <p class="mb-5 mt-5 fs-2 fw-bold d-flex justify-content-center "> My Orders </p>
+    {% include 'partials/_alerts.html' %}
+
+
+
+    {% if AllOrders %}
+
+    {% if AllOrders.count > 0 %}
+
+    <table class="table ">
+
+        <thead>
+            <tr>
+                <th scope="col">Order Number</th>
+                <th class="ps-4" scope="col">Date & Time </th>
+                <th scope="col">Is Finished</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% endif %}
+
+            {% for order in AllOrders %}
+
+            <tr>
+
+                <td>
+                    {{forloop.counter}} 
+                </td>
+
+                <td>
+                    {{order.OrderDate}}
+                </td>
+
+                <td>
+                    {% if order.is_finished == True %}
+                    Yes
+                    {% else %}
+                    No 
+                    {% endif %}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            {% else %}
+
+            <h3> No orders here </h3>
+
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

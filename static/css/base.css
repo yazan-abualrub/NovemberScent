@@ -1,0 +1,513 @@
+:root {
+    --button-background: #f5db8b;
+}
+
+
+body {
+    box-sizing: border-box;
+    background-color: white;
+    font-family: 'Aref Ruqaa', serif;
+    color: black;
+}
+
+
+.logo, .about h1{
+    font-family: 'Dancing Script', cursive;
+    color: black;
+    text-decoration: none;
+    font-size: 2.7rem;
+}
+
+.logo:hover {
+    color: black;
+}
+
+.nav-link:hover {
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+.nav-link,
+.nav-link:focus {
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: white;
+    border-right: black 1px solid;
+
+}
+
+
+
+.nav-link .navbar-toggler,
+i {
+    color: black;
+
+}
+
+
+@media all and (min-width: 992px) {
+
+    .navbar-nav {
+        height: 40px;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+    }
+
+    /* .navbar .nav-item:hover .nav-link{ } */
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        margin-top: 0;
+    }
+}
+
+
+.dropdown-menu {
+    font-size: 19px;
+    border: none;
+}
+
+.card {
+    border: none
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid var(--button-background);
+    background-color: white;
+}
+
+#myBtn:hover {
+    background-color: var(--button-background);
+}
+
+/* Button */
+.btn-5 {
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    border: none;
+    background: #f5db8b;
+    border-radius: 25px;
+    font-weight: 550;
+
+
+}
+
+.btn-5:hover {
+    font-size: 18px;
+    color: black;
+    background: transparent;
+}
+
+.btn-5:before,
+.btn-5:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 5px;
+    width: 0;
+    background: #f5db8b;
+    transition: 400ms ease all;
+}
+
+.btn-5:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.btn-5:hover:before,
+.btn-5:hover:after {
+    width: 100%;
+    transition: 0.5s ease all;
+}
+
+/* Button */
+
+.products .card img {
+    transition: transform 0.7s;
+}
+
+.products .card img:hover {
+    transform: scale(1.07);
+}
+
+/*  scrollbar */
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f5db8b;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f2cb56;
+}
+
+/*  scrollbar */
+
+
+
+/* Grid Images */
+
+.popular .img1 {
+    transition: transform 0.7s;
+}
+
+.popular .img1::after {
+    content: "bdk Parfums";
+    font-size: 1.3rem;
+}
+
+.popular .img1:hover,
+.popular .img2:hover,
+.popular .img3:hover {
+    transform: scale(1.02);
+
+}
+
+.popular .img2 {
+    margin-left: -40px;
+    width: 350px;
+    transition: transform 0.7s;
+
+}
+
+.popular .img3 {
+    margin-left: -40px;
+    margin-top: 5px;
+    width: 350px;
+    transition: transform 0.7s;
+}
+
+.popular .img2::after {
+    content: "Fragrance De Bois";
+    font-size: 1.3rem;
+}
+
+.popular .img3::after {
+    content: "Farpian parfums";
+    font-size: 1.3rem;
+}
+
+
+
+
+/* -- lightSlider -- */
+
+.slider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-text{
+        overflow: hidden;
+        height: 50px;
+
+}
+.box {
+    width: 200px;
+    overflow: hidden;
+    margin: 0px 40px;
+    border-radius: 10px;
+
+
+}
+
+.slide-img {
+    height: 300px;
+    position: relative;
+    padding: 10px 20px;
+
+
+}
+
+.slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+
+
+}
+
+.detail-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.type {
+    display: flex;
+    flex-direction: column;
+}
+
+.type a {
+    color: black;
+    margin: 5px 0px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding-right: 3px;
+    text-decoration: none;
+}
+
+.type span {
+    color: rgba(26, 26, 26, 0.6);
+}
+
+.price {
+    color: black;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.price:hover {
+    border-bottom: 1px solid black;
+    color: black;
+
+}
+
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.buy-btn {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f1ea;
+    color: black;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.buy-btn:hover {
+    color: black;
+    background-color: var(--button-background);
+    transition: all ease 0.5s;
+}
+
+.overlay {
+    visibility: hidden;
+}
+
+.slide-img:hover .overlay {
+    visibility: visible;
+    animation: fade 0.5s;
+
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* -- Footer -- */
+footer {
+    background-color: #fdf7e2;
+    margin-top: 100px;
+    font-family: cursive;
+
+}
+
+footer ul {
+    list-style: none;
+    font-family: cursive;
+}
+
+footer a,
+footer a:focus {
+
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+footer a:hover {
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+footer p {
+    font-size: 22px;
+}
+
+footer li {
+    padding: 5px;
+    font-weight: lighter;
+}
+
+footer span {
+    font-size: 17px;
+}
+
+.list-inline-item img {
+    width: 40px;
+}
+
+.signup input{
+    width: 100%;
+    height: 50px;
+    border:black 1px solid ;
+
+
+}
+.signup input:focus{
+    outline:none ;
+    border:#f5db8b 3px solid ;
+
+}
+
+.signup .signupBtn {
+
+    background-color: #f5db8b;
+    color:black;
+    width: 100%;
+    height: 40px;
+    border: none;
+    transition: 0.3s;
+    outline: none;
+    border: 3px solid #f5db8b;
+
+
+}
+
+.signup .signupBtn:hover{
+
+    color:#f5db8b;
+    background-color: white;
+    border: 3px solid #f5db8b;
+    font-size: 18px;
+
+}
+
+/* Quantity */
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    padding: 1rem;
+    border: 1px solid #f5db8b;
+    margin-bottom: 1rem;
+    margin-top: -7px;
+}
+  
+  .quantity-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .quantity-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+  .quantity-input {
+    outline: none;
+    user-select: none;
+    text-align: center;
+    width: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+  }
+
+  /* aler */
+
+.alert {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+}
+
+.alert-success {
+    color: black;
+    background-color: #f5db8b;
+    height: auto;
+    width: 100%;
+}
+
+.quantity-controll {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    height: 30px;
+}
+
+.fa-trash-can:hover {
+    color: rgb(214, 0, 0);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  color: #212529;
+  border-color: #f5db8b;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-check-input:checked {
+  background-color: #f5db8b;
+  border-color: #f5db8b;
+}

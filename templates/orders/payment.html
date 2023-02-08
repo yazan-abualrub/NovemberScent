@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Check out {% endblock %}
+
+{% block content%}
+
+
+<br><br>
+
+<form method="POST" action="{% url 'payment' %}">
+
+  {% csrf_token %}
+<div class="container mt-5">
+  <main>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span>Your cart</span>
+          <span class="badge bg-dark rounded-pill">{{orderdetails.count}}</span>
+        </h4>
+
+        {% for line in orderdetails %}
+
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{line.product.name}}
+                <small class="ms-1 text-muted"> {{line.quantity}}</small>
+              </h6>
+              <small class="text-muted">{{line.product.company}}</small>
+            </div>
+            <span class="text-muted">{% widthratio line.quantity 1 line.price %}$</span>
+
+          </li>
+
+          {% endfor %}
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>{{total}}$</strong>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-md-7 col-lg-8">
+
+        <form method="POST" class="needs-validation" novalidate>
+          {% csrf_token %}
+
+          {% include 'partials/_alerts.html' %}
+
+          <div class="row g-3">
+
+
+            <div class="col-12">
+              <label for="ShipPhone" class="form-label">Phone</label>
+              <input name="ShipPhone" type="tel" class="form-control" id="phone" placeholder="+962791234567"
+                value="{{ShipPhone}}" required>
+
+            </div>
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input name="ShipAddress" type="text" class="form-control" id="address"
+                placeholder="Country/ City/ Street/ building number" value="{{ShipAddress}}" required>
+            </div>
+          </div>
+
+          <label class="mt-3" for="html">Payment:</label><br>
+          <input type="radio" id="html" name="fav_language" value="HTML">
+          <label for="html">delivery</label><br>
+
+          <div class="mt-5 signup">
+            <button name="ButtonPayment" class="signupBtn w-100 fs-5" type="submit">Payment</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+
+</div>
+</form>
+{% endblock %}

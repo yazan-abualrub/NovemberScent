@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+
+{% block content%}
+
+<form method="POST">
+    {% csrf_token %}
+
+<hr style="height: 1px;">
+<div class="container ms-5">
+    <div class="row">
+
+        <div class="col-sm-6 col-lg-3 mt-5">
+            <h1> Account </h1>
+            <p> Welcome back, {{request.user.first_name}}</p>
+            <a style="color: black;" href="{% url 'logout' %}"> Log out </a>
+            <!-- <div class="mt-5 fs-3">Order history:</div> -->
+        </div>
+        <div class="col-lg-6 "></div>
+
+        <div style=" margin-top: 225px;" class="col-lg-3 col-sm-6">
+            <h3> Account details </h3>
+            <p> {{request.user.first_name}} {{request.user.last_name}}</p>
+            <p> {{address}} </p>
+            <p> {{request.user.email}} </p>
+            <a style="color: black; position: relative; top: 2rem;" href="{% url 'Edit' %}">Edit details</a>
+        </div>
+
+    </div>
+</div>
+
+</form>
+
+
+{% endblock %}

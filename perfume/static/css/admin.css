@@ -1,0 +1,63 @@
+#header {
+    background-color: #f2cb56;
+    color: black;
+}
+
+.module h2,
+.module caption,
+.inline-group h2,
+div.breadcrumbs,
+
+.button:active,
+input[type=submit]:active,
+input[type=button]:active,
+.button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.button.default:active,
+input[type=submit].default:active,
+.button.default:active,
+input[type=submit].default:focus,
+.button.default:hover,
+input[type=submit].default:hover{
+
+    background-color: rgb(255, 220, 116);
+    color: black;
+
+
+}
+
+a.section:link,
+a.section:visited,
+div.breadcrumbs a,
+#header a:link,
+#header a:visited,
+#logout-form button {
+    color: black;
+}
+
+a:link,
+a:visited {
+
+    color: white;
+}
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button,
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+    background-color: #f2cb56;
+    color: black;
+}
+
+.selector-chosen h2 {
+    background-color: #f2cb56 !important;
+    color: black !important;
+}

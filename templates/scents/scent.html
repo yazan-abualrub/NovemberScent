@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Scent {% endblock %}
+
+{% block content%}
+
+<style>
+    .fa-star:hover {
+        color: #f5db8b;
+    }
+</style>
+
+<form method="POST" action="{% url 'addToCart' %}">
+
+    {% csrf_token %}
+    <div class="container mt-5 ">
+
+        <div class="row ">
+
+            <div class="col-sm-6 col-lg-5">
+                <img style="width: 100%;" src="{{ pro.photo.url}}" alt="...">
+            </div>
+
+            <div class="col-lg-2"></div>
+            <div class="col-sm-6 col-lg-5">
+                <div class="buy ms-3">
+
+                    <p class="fs-1 mt-5">{{ pro.name }} </p>
+                    <p class="fs-5 mt-2 "> {{ pro.company }}</p>
+                    <p> ${{ pro.price }} USD</p>
+                    <p> size </p>
+                    <p style=" width:max-content; color:black;background-color: #f5db8b; border-radius:20px;"
+                        class="p-2 ps-4 pe-4"> {{ pro.size }} </p>
+
+                    <p>Quantity </p>
+                    <div class="quantity-control" data-quantity="">
+
+                        <button type="button" class="quantity-btn" data-quantity-minus=""><svg
+                                viewBox="0 0 409.6 409.6">
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                                    </g>
+                                </g>
+                            </svg></button>
+                        <input name="quantity" class="quantity-input" data-quantity-target="" value="1" step="1" min="1"
+                            max="">
+
+                        <button type="button" class="quantity-btn" data-quantity-plus=""><svg
+                                viewBox="0 0 426.66667 426.66667">
+                                <path
+                                    d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    {% include 'partials/_alerts.html' %}
+
+                    <div>
+                        <button name="AddToCart" type="submit" style="height:50px; width: 85%; border-radius:0rem;"
+                            class="btn-5"><span>Add to cart</span></button>
+
+                        <input type="hidden" name="pro_id" value="{{pro.id}}">
+                        <input type="hidden" name="price" value="{{pro.price}}">
+
+
+                        <a style="width: 10%;" href="{% url 'product_fav' pro_id=pro.id %}"
+                            style="border:none; background-color:transparent"><i
+                                class=" fa-xl fa-regular fa-star"></i></a>
+                    </div>
+
+                    <p class="mt-3">{{pro.description}}</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

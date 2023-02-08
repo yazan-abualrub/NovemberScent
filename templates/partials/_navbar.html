@@ -1,0 +1,111 @@
+
+
+<a class="d-flex justify-content-center mt-4 mb-4 logo" href="{% url 'index' %}">Scent November</a>
+
+<nav style="background-color: white; font-size: 19px;" class="navbar navbar-expand-lg sticky-top">
+
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a href="#"> <i class="fa-solid fa-bars"></i></a>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto ">
+
+        <li class="nav-item text-center " data-bs-toggle="modal" data-bs-target="#myModal">
+          <a class="nav-link ms-lg-5 pb-0 " aria-current="page" href="#"><i
+              class=" fa-solid fa-magnifying-glass"></i></a>
+        </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link active ms-lg-5 pb-0" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+
+
+         {% for category in categories %}
+        <li class="nav-item text-center ">
+          <a class="nav-link ms-lg-5 pb-0 " aria-current="page" href="{% url 'ScentType' category_id=category.id %}">{{category.name}}</a>
+        </li>
+        {% endfor %} 
+
+ 
+        <li class="nav-item dropdown text-center">
+          <a class="nav-link dropdown-toggle ms-lg-5 pb-0 " href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Scents
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'scents' %}">All Scents</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'showFav' %}">My Favorites</a></li>
+            {% endif %}
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown text-center">
+          <a class="nav-link dropdown-toggle ms-lg-5 pb-0" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+
+            {% if request.user.is_authenticated %}
+            Welcome
+            {% else %}
+            Join us
+            {% endif %}
+
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            {% if request.user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'myorders' %}">My orders</a></li>
+            {%else%}
+            <li><a class="dropdown-item" href="{% url 'signup' %}">Sign up</a></li>
+            {% endif %}
+            <li><a class="dropdown-item" href="{% url 'signin' %}">Sign in</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link ms-lg-5 pb-0" aria-current="page" href="{% url 'about' %}">About Us</a>
+        </li>
+
+
+        <li class="nav-item text-center">
+          <a class="nav-link pb-0 ms-lg-5" aria-current="page" href="{% url 'cart' %}"><i class="fa-solid fa-bag-shopping"></i></a>
+        </li>
+
+        <li class="nav-item text-center">
+
+          {% if request.user.is_authenticated %}
+          <a class="nav-link pb-0" aria-current="page" href="{%url 'profile'%}"><i class="fa-regular fa-user"></i></a>
+          {% else %}
+          <a class="nav-link pb-0" aria-current="page" href="{%url 'signin'%}"><i class="fa-regular fa-user"></i></a>
+          {% endif %}
+
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+
+</nav>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content border-dark border-4">
+      <div class="searchModal">
+        <div class="modal-body">
+
+          <form action="{% url 'scents' %}" class="d-flex" role="search">
+            <input id="mySearch" name="search_name" class="form-control me-2 shadow-none border-dark rounded-5" type="search" placeholder="Search"
+              aria-label="Search">
+            <button class="btn btn-outline-dark shadow-none" type="submit">Search</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Cart {% endblock %}
+
+{% block content%}
+
+
+
+<div class="container mt-5  ">
+
+    <p class="mb-5 mt-5 fs-2 fw-bold d-flex justify-content-center "> Cart </p>
+
+    {% if order %}
+
+    {% if orderdetails.count > 0 %}
+
+    <table class="table ">
+
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th scope="col">Product</th>
+                <th class="ps-4" scope="col">Image</th>
+                <th class="ps-4" scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                <th scope="col"> </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% endif %}
+
+            {% for line in orderdetails %}
+
+            <tr >
+                <th scope="row">{{forloop.counter}}</th>
+
+                <td>
+                    <a style="text-decoration:none;color: black;" href="{% url 'scent' pro_id=line.product.id %}">
+                        {{line.product.name}}<br>{{line.product.size}}</a>
+
+                </td>
+                <td> <img src="{{ line.product.photo.url }}" style="width: 80px ;" alt="Scent image"> </td>
+
+
+                <td  class="ps-4">
+                    <div class="quantity-controll" data-quantity="">
+
+                        <a href="{% url 'SubQty' orderdetails_id=line.id %}"> <button type="button" class="quantity-btn"
+                                data-quantity-minus=""><svg viewBox="0 0 409.6 409.6">
+                                    <path
+                                        d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                                </svg></button></a>
+
+                        {{line.quantity}}
+
+                        <a href="{% url 'AddQty' orderdetails_id=line.id %}"> <button type="button" class="quantity-btn"
+                                data-quantity-plus=""><svg viewBox="0 0 426.66667 426.66667">
+                                    <path
+                                        d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
+                                </svg>
+                            </button></a>
+                    </div>
+                </td>
+
+                <td> {{line.price}}$ </td>
+                <td> {% widthratio line.quantity 1 line.price %}$</td>
+                <td> <a href="{% url 'RemoveFromCart' orderdetails_id=line.id %}"> <i
+                            class="fa-regular fa-trash-can"></i></a> </td>
+
+            </tr>
+            {% empty %}
+            <br>            
+            <h5> Your cart is empty
+                <a class="fw-bold" style="text-decoration:none; color: black;" href="{% url 'scents' %}">Go to
+                    Shopping</a>
+            </h5><br>
+            
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% if orderdetails.count > 0 %}
+
+        <div class="d-flex justify-content-between">
+            <a class="fs-5" style="text-decoration: none; color: black;" href="{% url 'scents' %}">Continue shopping
+                <i class="fa-solid fa-angles-right"></i>
+            </a>
+            <a class="me-5 pe-5" style="text-decoration: none; color:black"> Subtotals: {{total}}$
+        </div>
+    
+    <a style="text-decoration:none;" class="mt-3 signup d-flex justify-content-end" href="{% url 'payment' %}"> <button
+            style="height:50px; width: 300px;" type="submit" class=" signupBtn text-center ">Check out</button></a>
+
+            {%endif%}
+
+    {% else %}
+
+    <h3> No orders </h3><br>
+    <a class="fw-bold" style="text-decoration:none; color: black;" href="{% url 'scents' %}">Go to
+        Shopping
+        <i class="fa-solid fa-angles-right"></i>
+    </a>
+
+    {% endif %}
+</div>
+
+{% endblock %}
+

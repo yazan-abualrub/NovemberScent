@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit {% endblock %}
+
+
+{% block content%}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="container mt-5 signup">
+        <div class="row">
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4">
+
+                {% include 'partials/_alerts.html' %}
+
+                <div class="mb-4 ">
+                    <input name="fname" type="text" id="registerName" placeholder="First name" class="text-center"
+                        required />
+                </div>
+
+                <div class="mb-4">
+                    <input  name="lname" type="text" id="registerUsername" placeholder="Last name" class="text-center"
+                        required />
+                </div>
+
+                <div class="mb-4">
+                    <input name="address" type="text" id="registerAddress" placeholder="Address" class="text-center"
+                        required />
+                </div>
+
+                <div class="mb-4">
+                    <input  name="password" type="password" id="registerPassword" placeholder="Password"
+                        class="text-center" required />
+                </div>
+
+                <a href="{% url 'signin' %}"> <button type="submit" class="signupBtn text-center">Save
+                        changes</button></a>
+
+            </div>
+
+            <div class="col-sm-4"></div>
+        </div>
+
+    </div>
+</form>
+
+
+
+{% endblock %}
